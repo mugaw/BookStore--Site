@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BookVerse - MuGaw BookSite</title>
+  <link rel="shortcut icon" href="book.webp" type="image/x-icon">
+  <link rel="stylesheet" href="styles.css">
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="script.js" defer></script>
+</head>
+<body class="min-h-screen flex flex-col bg-gray-100 dark:bg-gray-900 theme-transition">
+  <!-- Header -->
+  <header class="bg-gradient-to-r from-18181B via-331029 to-18181B p-4">
+    <div class="container mx-auto flex justify-between items-center">
+      <h1 class="text-3xl font-bold text-white">BookVerse</h1>
+      <div class="flex items-center space-x-4">
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="flex-1 container mx-auto px-4 py-12">
+    <!-- Search and Filters -->
+    <div class="flex flex-col gap-6">
+      <input
+        type="text"
+        id="searchInput"
+        class="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+        placeholder="Search books by title, author, or subject..."
+      />
+
+      <div class="flex gap-4 overflow-x-auto pb-2" id="categoryFilters">
+        <button
+          class="px-4 py-2 rounded-md bg-blue-600 text-white hover:bg-blue-700 transition-colors"
+          data-category="all"
+        >
+          All
+        </button>
+        <button
+          class="px-4 py-2 rounded-md bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors"
+          data-category="fiction"
+        >
+          Fiction
+        </button>
+        <button
+          class="px-4 py-2 rounded-md bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors"
+          data-category="science"
+        >
+          Science
+        </button>
+        <button
+          class="px-4 py-2 rounded-md bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors"
+          data-category="history"
+        >
+          History
+        </button>
+      </div>
+
+      <!-- Book Grid -->
+      <div
+        id="bookGrid"
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+      >
+        <!-- Books will be loaded here -->
+      </div>
+
+      <!-- Loading Spinner -->
+      <div id="loadingSpinner" class="flex justify-center hidden">
+        <div class="loading-spinner text-gray-600 dark:text-gray-400"></div>
+      </div>
+
+      <!-- Load More Button -->
+      <button
+        id="loadMoreBtn"
+        class="mx-auto px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors hidden"
+      >
+        Load More Books
+      </button>
+    </div>
+  </main>
+
+  <!-- Book Reader -->
+  <div id="bookReader" class="fixed inset-0 bg-white dark:bg-gray-900 z-50 overflow-hidden hidden transition-opacity duration-300">
+    <div class="h-full flex flex-col">
+      <div class="bg-gray-100 dark:bg-gray-800 p-4 flex justify-between items-center">
+        <div>
+          <h2 id="bookTitle" class="text-xl font-bold dark:text-white"></h2>
+          <p id="bookAuthor" class="text-gray-600 dark:text-gray-400"></p>
+        </div>
+        <button 
+          onclick="closeReader()"
+          class="p-2 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-full"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 dark:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <div 
+        id="bookContent" 
+        class="flex-1 overflow-y-auto p-4 md:p-8 lg:p-16 book-content"
+        onscroll="saveReadingProgress(currentBookId)"
+      >
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-gradient-to-r from-18181B via-331029 to-18181B p-4 text-center text-white">
+    <p>&copy; 2025 BookVerse. All rights reserved.</p>
+    <p>Made with <span class="heart-icon">❤</span></p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,226 @@
+/* Custom colors */
+:root {
+    --main-color: #18181B;
+    --accent-color: #8B5CF6;
+    /* Purple accent */
+    --third-color: #1E1B4B;
+    --card-bg: rgba(255, 255, 255, 0.1);
+    --card-bg-dark: rgba(30, 27, 75, 0.3);
+}
+
+
+/* Gradient background */
+body {
+    background: linear-gradient(135deg, var(--main-color), var(--third-color));
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+}
+
+/* Navigation menu */
+.nav-menu {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .nav-menu {
+        display: flex;
+    }
+}
+
+/* Book reader styles */
+.theme-transition {
+    transition: all 0.3s ease;
+}
+
+book-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.dark .book-card {
+    background: var(--card-bg-dark);
+}
+
+.book-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 25px -5px rgba(139, 92, 246, 0.1),
+        0 8px 10px -6px rgba(139, 92, 246, 0.1);
+}
+
+/* Updated button styles */
+.btn-primary {
+    background-color: var(--accent-color);
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #7C3AED;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px -1px rgba(139, 92, 246, 0.2);
+}
+
+.btn-secondary {
+    background-color: rgba(139, 92, 246, 0.1);
+    color: var(--accent-color);
+    border: 1px solid var(--accent-color);
+}
+
+.btn-secondary:hover {
+    background-color: rgba(139, 92, 246, 0.2);
+}
+
+/* Category filter buttons */
+.category-btn {
+    background-color: rgba(139, 92, 246, 0.1);
+    color: var(--accent-color);
+    border: 1px solid var(--accent-color);
+    transition: all 0.3s ease;
+}
+
+.category-btn.active {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.category-btn:hover {
+    background-color: rgba(139, 92, 246, 0.2);
+}
+
+/* Search input styling */
+.search-input {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    backdrop-filter: blur(8px);
+}
+
+.search-input:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.2);
+}
+
+/* Loading spinner with updated color */
+.loading-spinner {
+    border: 4px solid var(--accent-color);
+    border-top: 4px solid transparent;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.book-content {
+    font-family: "Georgia", serif;
+    line-height: 1.8;
+    max-width: 90%;
+    /* Increased from 65ch */
+    margin: 0 auto;
+    color: #ffffff;
+    padding: 0 2rem;
+    /* Added padding for better readability */
+}
+
+.dark .book-content {
+    color: #e5e5e5;
+}
+
+.book-content p {
+    margin-bottom: 1.5em;
+    text-align: justify;
+}
+
+.book-content h2 {
+    font-family: "Arial", sans-serif;
+    margin: 2em 0 1em;
+    text-align: center;
+}
+
+.book-image {
+    max-width: 100%;
+    height: auto;
+    margin: 2rem auto;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.dark .book-image {
+    box-shadow: 0 4px 6px -1px rgba(255, 255, 255, 0.1);
+}
+
+.book-image:hover {
+    transform: scale(1.02);
+}
+
+@keyframes pageTurn {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Updated footer styles */
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 40;
+    background: linear-gradient(135deg, var(--main-color), var(--third-color));
+    backdrop-filter: blur(8px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Updated heart animation */
+.heart-icon {
+    display: inline-block;
+    color: #8B5CF6;
+    animation: heartbeat 1.2s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+    0% {
+        transform: scale(1);
+    }
+
+    14% {
+        transform: scale(1.3);
+    }
+
+    28% {
+        transform: scale(1);
+    }
+
+    42% {
+        transform: scale(1.3);
+    }
+
+    70% {
+        transform: scale(1);
+    }
+}
+
+/* Add padding to main content to prevent footer overlap */
+main {
+    padding-bottom: 6rem;
+}
+
+
